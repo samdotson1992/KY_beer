@@ -8,7 +8,6 @@
     <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
     <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
-    <script src="Leaflet.geoCSV/leaflet.geocsv.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -39,10 +38,10 @@
         
         .header {
             font-family: 'Cabin Sketch', cursive;
-            font-size: 9em !important;
+            font-size: 5em !important;
         }
         
-        .text{
+        .text {
             font-family: 'Roboto', sans-serif;
         }
 
@@ -54,7 +53,7 @@
 
     <div class="container">
 
-        <h1 class="header">Kentucky Beer</h1>
+        <h1 class="header">Kentucky Craft Breweries</h1>
     </div>
 
     <center>
@@ -83,21 +82,6 @@
                 };
             }
         });
-
-        var x = document.getElementById("demo");
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.watchPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-        }
 
         omnivore.topojson("KY-21-kentucky-counties.topojson", null, customLayer).addTo(map);
 
