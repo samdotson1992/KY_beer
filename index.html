@@ -12,13 +12,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Comfortaa|Roboto" rel="stylesheet">
     <link href="easy-button.css" rel="stylesheet">
     <script src="easy-button.js">
 
-
     </script>
-
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://domoritz.github.io/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
@@ -44,7 +42,9 @@
         .text {
             font-family: 'Roboto', sans-serif;
         }
-
+        .popup{
+        font-family: 'Comfortaa', cursive;
+        }
     </style>
 </head>
 
@@ -86,7 +86,7 @@
         omnivore.topojson("KY-21-kentucky-counties.topojson", null, customLayer).addTo(map);
 
         omnivore.csv("KY_breweries.csv", null, customLayer).bindPopup(function(layer) {
-            return "<h1>" + layer.feature.properties.name + "</h1> <br>"
+            return "<h1 class='popup'>" + layer.feature.properties.name + "</h1>"
         }).addTo(map);
 
 
