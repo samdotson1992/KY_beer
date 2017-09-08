@@ -82,21 +82,20 @@
                 };
             }
         });
+          
+        L.control.locate().addTo(map);
+
+        L.easyButton('fa-home', function() {
+            map.setView([38.03785, -84.850783], 7);
+        }).addTo(map);
+
 
         omnivore.topojson("KY-21-kentucky-counties.topojson", null, customLayer).addTo(map);
 
         omnivore.csv("KY_breweries.csv", null, customLayer).bindPopup(function(layer) {
             return "<h1 class='popup'>" + layer.feature.properties.name + "</h1>"
         }).addTo(map);
-
-
-        L.control.locate().addTo(map);
-
-
-        L.easyButton('fa-home', function() {
-            map.setView([38.03785, -84.850783], 7);
-        }).addTo(map);
-
+     
     </script>
 </body>
 
