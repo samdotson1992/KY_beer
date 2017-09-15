@@ -20,8 +20,8 @@
 
     <style>
         #map {
-            width: 98%;
-            height: 450px
+            width: 100%;
+            height: 600px
         }
         
         #fine_print {
@@ -37,8 +37,18 @@
         .text {
             font-family: 'Roboto', sans-serif;
         }
-        .popup{
+        #popup_head{
         font-family: 'Comfortaa', cursive;
+        font-size: 2em;
+        font-weight: 900;    
+        }
+        
+        .popup_text{
+        font-family: 'Comfortaa', cursive;
+        font-size: .6em;
+        font-weight: 200;    
+        margin: 0px;
+        padding: 0px;    
         }
     </style>
 </head>
@@ -76,12 +86,20 @@
                 };
             }
         });
-
-        omnivore.topojson("KY-21-kentucky-counties.topojson", null, customLayer).addTo(map);
-
-        omnivore.csv("KY_breweries.csv", null, customLayer).bindPopup(function(layer) {
-            return "<h1 class='popup'>" + layer.feature.properties.name + "</h1>"
+        
+        var beer=omnivore.csv("KY_breweries.csv", null)
+        
+        var maxBounds = L.latLngBounds(
+    L.latLng(37.07071,-88.63752), //Southwest
+    L.latLng(38.48161,-82.64268)  //Northeast
+);
+        
+        
+        
+        beer.bindPopup(function(layer) {
+            return "<div class='popup_text'> <h1 id='popup_head'>" + layer.feature.properties.name + "</h1><h2>"+layer.feature.properties.route +"</h2><h2>"+layer.feature.properties.city +"</h2><h2>"+layer.feature.properties.phone +"</h2><h2>"+layer.feature.properties.website +"</h2><h2>"+layer.feature.properties.hours +"</h2> <br><h2></div> "
         }).addTo(map);
+        
 
         L.control.locate().addTo(map);
 
