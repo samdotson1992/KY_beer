@@ -102,10 +102,18 @@
             
 
             beer.bindPopup(function(layer) {
-                return "<div class='popup_text'> <h1 id='popup_head'>" + layer.feature.properties.name + "</h1><h2>" + layer.feature.properties.route + "</h2><h2>" + layer.feature.properties.city + "</h2><h2>" + layer.feature.properties.phone + "</h2><h2>" + layer.feature.properties.website + "</h2><h2>" + layer.feature.properties.hours + "</h2> <br><h2></div> "
+                let text=''
+                for (i in layer.feature.properties){
+                if (layer.feature.properties[i]) {   
+                text =text.concat("<h2>" +layer.feature.properties[i] + "</h2>") 
+                console.log(i)    
+                }}
+                return text
+               
             }).on('click', markerOnClick).addTo(map);
 
 
+        
             map.addControl(L.control.locate({
                 locateOptions: {
                     maxZoom: 10
